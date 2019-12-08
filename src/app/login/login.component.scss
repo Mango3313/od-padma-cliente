@@ -1,0 +1,33 @@
+.btn-google {
+    color: white;
+    background-color: #ea4335;
+  }
+  
+  .btn-facebook {
+    color: white;
+    background-color: #3b5998;
+  }
+  .center-card{
+      display: flex;
+    align-items: center;
+  }
+  html{
+      height: 100vh;
+      width: 100vw;
+  }
+  body {
+    background-color: #000000;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100vh;
+  }
+  .full-height{
+      height: 100vh;
+  }
+  #gradient {
+    width: 100%;
+    height: 800px;
+    padding: 0px;
+    margin: 0px;
+  }
+  
