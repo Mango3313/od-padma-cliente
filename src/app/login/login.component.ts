@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
         //var response = JSON.parse(data.message)
         //console.log(data.token)
         if (typeof data.token !== 'undefined' && data.token !== null && data.token !== 'undefined'){
-          localStorage.setItem('headerToken', data.token);
+          sessionStorage.setItem('headerToken', data.token);
           this.router.navigate(['/','home']);
           //$state.go()
         }

@@ -1,1 +1,103 @@
-<p>medicamentos works!</p>
+<div class="container pt-4">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Alta medicamento
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="Nombre" #inputNombreMed>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Hora aplicacion</label>
+                            <input type="tel" class="form-control" id="exampleInputPassword1"
+                                placeholder="Hora aplicacion" #inputHora>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Descripcion</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" #textAreaDesc></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Dosis recomendada</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1"
+                                placeholder="Dosis recomendada" #inputDosis>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Cantidad de medicamento</label>
+                            <input type="number" class="form-control" id="exampleInputPassword1"
+                                placeholder="Dosis recomendada" #inputCantidad>
+                        </div>
+                        <button type="button" (click)="altaMedico()" class="btn btn-primary">Dar de alta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4 mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Lista de medicamentos
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"># Registro</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Dosis</th>
+                                <th scope="col">Hora aplicacion</th>
+                                <th scope="col">Descripcion</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let med of meds; let i=index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [id]="'nomM_'+med._id"
+                                            aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                            value="{{med.nombre}}">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [id]="'dos_'+med._id"
+                                            aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                            value="{{med.dosis}}">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [id]="'hora_'+med._id"
+                                            aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                            value="{{med.hora_aplicacion}}">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" [id]="'desc_'+med._id"
+                                            aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                            value="{{med.descripcion}}">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="guardarMedicamento($event);" [id]="'g_'+med._id">Guardar</button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="eliminarMedicamento($event);" [id]="'e_'+med._id">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

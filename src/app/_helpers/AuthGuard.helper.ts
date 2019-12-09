@@ -7,7 +7,7 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (typeof localStorage.getItem('headerToken') !== 'undefined' && localStorage.getItem('headerToken') !== null && localStorage.getItem('headerToken') !== 'undefined') {
+        if (typeof sessionStorage.getItem('headerToken') !== 'undefined' && sessionStorage.getItem('headerToken') !== null && sessionStorage.getItem('headerToken') !== 'undefined') {
             // logged in so return true
             return true;
         }

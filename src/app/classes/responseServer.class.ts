@@ -1,3 +1,3 @@
 export class responseServer {
-    constructor(public error:boolean,public message:string){}
+    constructor(public error:boolean,public message: string){}
 }

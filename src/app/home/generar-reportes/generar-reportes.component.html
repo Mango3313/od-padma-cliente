@@ -1,1 +1,90 @@
-<p>generar-reportes works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card  mt-4">
+                <div class="card-header">
+                    Dactares
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Telefono</th>
+                                <th class="hide" scope="col">Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let doctor of doctores; let i = index" [attr.data-index]="i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{doctor.nombre}}</td>
+                                <td>{{doctor.telefono}}</td>
+                                <td class="hide">{{doctor._id}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card  mt-4">
+                <div class="card-header">
+                    Trabajadores
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Puesto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let trabajador of trabajadores;let i = index" [attr.data-index]="i">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{trabajador.nombre}}</td>
+                                <td>{{trabajador.telefono}}</td>
+                                <td>{{trabajador.puesto}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pb-4 ">
+        <div class="col">
+            <div class="card  mt-4">
+                <div class="card-header">
+                    Medicamentos
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr *ngFor="let meds of medicamentos;let i = index" [attr.data-index]="i">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td>{{meds.nombre}}</td>
+                                        <td>{{meds.descripcion}}</td>
+                                        <td>{{meds.cantidad}}</td>
+                                    </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

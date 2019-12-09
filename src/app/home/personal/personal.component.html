@@ -1,1 +1,85 @@
-<p>personal works!</p>
+<div class="container pt-4">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Alta personal
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nombre</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    placeholder="Nombre" #inputNombreMed>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Telefono</label>
+                                <input type="tel" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Hora aplicacion" #inputHora>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Puesto</label>
+                                <input class="form-control" id="exampleFormControlTextarea1" rows="1" #textAreaDesc placeholder="Puesto">
+                            </div>
+                            <button type="button" (click)="altaPersonal()" class="btn btn-primary">Dar de alta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 mb-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Lista de personal
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"># Registro</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Puesto</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let trab of trabajadores; let i=index">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" [id]="'nomM_'+trab._id"
+                                                aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                                value="{{trab.nombre}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" [id]="'dos_'+trab._id"
+                                                aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                                value="{{trab.telefono}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" [id]="'hora_'+trab._id"
+                                                aria-describedby="emailHelp" placeholder="Nombre" #inputNombreMedico
+                                                value="{{trab.puesto}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" (click)="guardarPersonal($event);" [id]="'g_'+trab._id">Guardar</button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" (click)="eliminarPersonal($event);" [id]="'e_'+trab._id">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
