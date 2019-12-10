@@ -9,4 +9,7 @@ export class AuthService {
   obtenerToken(nombre: string,password:string){
    return this.http.post(`${this.rutaApi}/login`,JSON.stringify({nombre:nombre,password:password}));   
   }
+  registrar(nombre: string,password:string){
+    return this.http.post(`${this.rutaApi}/crear-usuario`,JSON.stringify({nombre:nombre,password:password}));
+  }
 }

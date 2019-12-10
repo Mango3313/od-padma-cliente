@@ -15,9 +15,14 @@ export class HomeComponent implements OnInit {
   faClinicMedical = faClinicMedical;
   faSignOutAlt = faSignOutAlt;
 
+
   constructor() { }
 
   ngOnInit() {
+  }
+  salir(){
+    sessionStorage.removeItem('headerToken');
+    location.reload();
   }
 
 }

@@ -6,38 +6,277 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col"># Registro</th>
-                                <th scope="col">Nombre de quien la realiza</th>
-                                <th scope="col">Descripcion</th>
-                                <th scope="col">Estado</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let solicitud of solicitudes; let i=index">
-                                <th scope="row">{{i+1}}</th>
-                                <td>{{solicitud.nombreRealizador}}</td>
-                                <td>{{solicitud.descripcion}}</td>
-                                <td>
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel1" [id]="'s_'+solicitud._id">
-                                            <option *ngFor="let summary of summaries" [value]="summary" [selected]="solicitud.estado == summary">
-                                                {{summary}}
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Nombre" id="inputNNombre"
+                                            #inputNNombre>
+                                    </div>
+                                    <div class="col">
+                                        <textarea type="text" class="form-control" placeholder="Observaciones"
+                                            id="inputNObs" #inputNObs></textarea>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <select class="form-control" id="sel1" id="selectNDoc" #selectNDoc>
+                                            <option *ngFor="let doc of doctores" [value]="doc._id">
+                                                {{doc.nombre}}
                                             </option>
                                         </select>
                                     </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary" (click)="guardarPeticion($event);" [id]="solicitud._id">Guardar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    <div class="col">
+                                        <select class="form-control" id="selectNMed" #selectNMed>
+                                            <option *ngFor="let med of medicinas" [value]="med._id">
+                                                {{med.nombre}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <select class="form-control" id="selectNEdo" #selectNEdo>
+                                            <option value="Inactivo">Inactivo</option>
+                                            <option value="Activo">Activo</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select class="form-control" id="selectNProg" #selectNProg>
+                                            <option value="Recien ingresado">Recien ingresado</option>
+                                            <option value="Tratamiento">Tratamiento</option>
+                                            <option value="Salida">Salida</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <input type="date" class="form-control" placeholder="Nombre" id="inputFechaIn"
+                                            #inputFechaIn>
+                                    </div>
+                                    <div class="col">
+                                        <input type="date" class="form-control" placeholder="Nombre" id="inputFechaUV"
+                                            #inputFechaUV>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <input type="date" class="form-control" placeholder="Nombre" id="inputFechaPV"
+                                            #inputFechaPV>
+                                    </div>
+                                    <div class="col">
+                                        <input type="date" class="form-control" placeholder="Nombre" id="inputFechaS"
+                                            #inputFechaS>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <input type="number" class="form-control" placeholder="Nombre" id="inputVisitas"
+                                            #inputVisitas>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row pt-2">
+                                <div *ngIf="!doesMod" class="col">
+                                    <button class="btn btn-primary" (click)="altaPaciente()" type="button">Dar de
+                                        alta</button>
+                                </div>
+                                <div *ngIf="doesMod" class="col">
+                                    <button *ngIf="doesMod" class="btn btn-primary" (click)="modificar();" type="button">Modificar</button>
+                                </div>
+                            </div>
+                            <!--
+                                <form>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Nombre" id="inputNombre"
+                                            #inputNombre>
+                                    </div>
+                                    <div class="col">
+                                        <textarea type="text" class="form-control" placeholder="Observaciones"
+                                            id="inputObs" #inputObs></textarea>
+                                    </div>
+                                </div>
+                                
+                                   <div class="row pt-2">
+                                    <div class="col">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="col">
+                                        <div class="col">
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="col">
+                                        <div class="col">
+                                            <input type="date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+                                    <div class="col">
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Ingresado</option>
+                                            <option value="">Tratamiento</option>
+                                            <option value="">Salida</option>
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <select name="" id="" class="form-control">
+                                            <option value="">Activo</option>
+                                            <option value="">Inactivo</option>
+                                        </select>
+                                    </div>
+                                </div> 
+                                
+
+                                <div class="row pt-2">
+                                        <div class="col">
+                                            <select class="form-control" id="sel1" id="selectDoc" #selectDoc>
+                                                <option *ngFor="let doc of doctores" [value]="doc._id">
+                                                    {{doc.nombre}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control" id="selectMed" #selectMed>
+                                                <option *ngFor="let med of medicinas" [value]="med._id">
+                                                    {{med.nombre}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2">
+                                        <div class="col">
+                                            <button class="btn btn-primary" (click)="altaPaciente()" type="button">Dar de
+                                                alta</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            -->
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"># Registro</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Descripcion</th>
+                                        <th scope="col">Estado</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let pac of pacientes; let i=index">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td>{{pac.nombre}}</td>
+                                        <td>{{pac.observaciones}}</td>
+                                        <td>
+                                            {{pac.estado}}
+                                        </td>
+                                        <td>
+
+                                            <button *ngIf="!doesMod" class="btn btn-primary" (click)="doesMod = ! doesMod;editar($event)"
+                                                [id]="'g_'+pac._id">Editar</button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-danger" (click)="eliminarMedicamento($event);"
+                                                [id]="'e_'+pac._id">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--
+    <ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Modificar paciente:</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre" id="inputNNombre" #inputNNombre>
+                </div>
+                <div class="col">
+                    <textarea type="text" class="form-control" placeholder="Observaciones" id="inputNObs"
+                        #inputNObs></textarea>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col">
+                    <select class="form-control" id="sel1" id="selectNDoc" #selectNDoc>
+                        <option *ngFor="let doc of doctores" [value]="doc._id">
+                            {{doc.nombre}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-control" id="selectNMed" #selectNMed>
+                        <option *ngFor="let med of medicinas" [value]="med._id">
+                            {{med.nombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col">
+                    <select class="form-control" id="selectNEdo" #selectNEdo>
+                        <option value="Inactivo">Inactivo</option>
+                        <option value="Activo">Activo</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-control" id="selectNProg" #selectNProg>
+                        <option value="Recien ingresado">Recien ingresado</option>
+                        <option value="Tratamiento">Tratamiento</option>
+                        <option value="Salida">Salida</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Nombre" id="inputFechaIn" #inputFechaIn>
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Nombre" id="inputFechaUV" #inputFechaUV>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Nombre" id="inputFechaPV" #inputFechaPV>
+                </div>
+                <div class="col">
+                    <input type="date" class="form-control" placeholder="Nombre" id="inputFechaS" #inputFechaS>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Nombre" id="inputVisitas" #inputVisitas>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Guardar</button>
+        <button type="button" class="btn btn-warning text-white">Imprimir</button>
+    </div>
+</ng-template>-->
 </div>

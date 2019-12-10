@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../auth.service';
 import {responseToken} from '../classes/responseToken.class';
 import {Router} from '@angular/router';
+import { responseServer } from '../classes/responseServer.class';
 
 
 @Component({
@@ -12,6 +13,9 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   @ViewChild('inputCorreo',{static:false}) inputCorreo:ElementRef;
   @ViewChild('inputPassword',{static:false}) inputPassword:ElementRef;
+  @ViewChild('inputCorreoR',{static:false}) inputCorreoR:ElementRef;
+  @ViewChild('inputPasswordR',{static:false}) inputPasswordR:ElementRef;
+  toggleLogin: boolean = false;
   constructor(private authServ: AuthService,private router: Router) { }
   doLogin(){
     var password = this.inputPassword.nativeElement.value;
@@ -28,6 +32,22 @@ export class LoginComponent implements OnInit {
           //$state.go()
         }
       });
+    }
+  }
+  doRegistro(){
+    this.inputPasswordR.nativeElement.value = '';
+    this.inputCorreoR.nativeElement.value = '';
+    var password = this.inputPasswordR.nativeElement.value;
+    var nombre = this.inputCorreoR.nativeElement.value;
+    if (password === '' || nombre ===''){
+      this.authServ.registrar(nombre,password).subscribe(
+        (data: responseServer)=>{
+          console.log(data)
+          if(!data.error){
+            this.toggleLogin = ! this.toggleLogin;
+          }
+        }
+      );
     }
   }
 

@@ -5,7 +5,9 @@
       <div class="row center-card">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
           <div class="card card-signin my-5">
-            <div class="card-body">
+            <div><a *ngIf="!toggleLogin" (click)="toggleLogin = !toggleLogin">Registro</a></div>
+            <div><a *ngIf="toggleLogin" (click)="toggleLogin = !toggleLogin">Login</a></div>
+            <div *ngIf="!toggleLogin" class="card-body">
               <h5 class="card-title text-center">Inicio de sesion</h5>
               <form class="form-signin">
                 <div class="form-label-group">
@@ -28,6 +30,25 @@
                 <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>-->
               </form>
             </div>
+            <div *ngIf="toggleLogin" class="card-body">
+                <h5 class="card-title text-center">Registro</h5>
+                <form class="form-signin">
+                  <div class="form-label-group">
+                    <label for="inputCorreo">Nombre de usuario</label>
+                    <input type="text" id="inputCorreoR" class="form-control" placeholder="Ejemplo: correo@falso.com" required autofocus #inputCorreoR>
+                  </div>
+    
+                  <div class="form-label-group">
+                    <label for="inputPassword">Contraseña</label>
+                    <input  type="password" id="inputPasswordR" class="form-control" placeholder="Ejemplo: Jhon Whick" required #inputPasswordR>
+                  </div>
+    
+                  <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)="doRegistro()" type="button">Registrar</button>
+                 <!-- <hr class="my-4">
+                  <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+                  <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>-->
+                </form>
+              </div>
           </div>
         </div>
       </div>

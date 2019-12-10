@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,7 +54,8 @@ import { PacientesService } from './_services/pacientes.service';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features */
   ],
-  providers: [AuthService,AuthGuard,EstadisticasService,SolicitudesService,MedicosService,MedicamentosService,PersonalService,PacientesService],//AuthService],
+  providers: [AuthService,AuthGuard,EstadisticasService,SolicitudesService,MedicosService,MedicamentosService,
+    PersonalService,PacientesService,NgbModal],//AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
