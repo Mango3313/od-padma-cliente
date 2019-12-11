@@ -6,7 +6,7 @@ import { Trabajador } from '../_interfaces/trabajadores.interface';
   providedIn: 'root'
 })
 export class PersonalService {
-  direccionApi = 'http://localhost:3000/trabajadores';
+  direccionApi = 'https://pure-shore-99875.herokuapp.com/trabajadores';
   constructor(private http: HttpClient) { }
   getTrabs(){
     var header = new HttpHeaders({"Authorization":'Bearer '+sessionStorage.getItem('headerToken'),'Content-Type': 'application/json',});

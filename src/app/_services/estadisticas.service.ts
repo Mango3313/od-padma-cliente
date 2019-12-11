@@ -5,9 +5,9 @@ import { responseServer } from '../classes/responseServer.class';
 
 @Injectable()
 export class EstadisticasService {
-  rutaApiDoctores = "http://localhost:3000/doctores";
-  rutaApiTrabajadores = "http://localhost:3000/trabajadores";
-  rutaApiMedicamentos = "http://localhost:3000/medicamentos";
+  rutaApiDoctores = "https://pure-shore-99875.herokuapp.com/doctores";
+  rutaApiTrabajadores = "https://pure-shore-99875.herokuapp.com/trabajadores";
+  rutaApiMedicamentos = "https://pure-shore-99875.herokuapp.com/medicamentos";
 
   constructor(private http: HttpClient) {
   }

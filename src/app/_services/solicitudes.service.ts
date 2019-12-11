@@ -6,7 +6,7 @@ import { Solicitud } from '../_interfaces/solicitud.interface';
 
 @Injectable()
 export class SolicitudesService {
-  rutaApiSolicitud = 'http://localhost:3000/peticiones'
+  rutaApiSolicitud = 'https://pure-shore-99875.herokuapp.com/peticiones'
   constructor(private http: HttpClient) { }
   getSolicitudes(){
     var header = new HttpHeaders({"Authorization":'Bearer '+sessionStorage.getItem('headerToken'),'Content-Type': 'application/json',});

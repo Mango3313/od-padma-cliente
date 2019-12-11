@@ -6,7 +6,7 @@ import { Medicamento } from '../_interfaces/medicamento.interface';
   providedIn: 'root'
 })
 export class MedicamentosService {
-  direccionApi = 'http://localhost:3000/medicamentos';
+  direccionApi = 'https://pure-shore-99875.herokuapp.com/medicamentos';
   constructor(private http: HttpClient) { }
   getMedicos(){
     var header = new HttpHeaders({"Authorization":'Bearer '+sessionStorage.getItem('headerToken'),'Content-Type': 'application/json',});

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class AuthService {
-  rutaApi = "http://localhost:3000/usuarios";
+  rutaApi = "https://pure-shore-99875.herokuapp.com/usuarios";
   constructor(private http: HttpClient) { 
   }
   obtenerToken(nombre: string,password:string){

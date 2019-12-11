@@ -88,16 +88,16 @@ export class PacientesComponent implements OnInit{
     );
   }
   altaPaciente() {
-    var nombre = this.inputNombre.nativeElement.value;
-    var obs = this.inputObs.nativeElement.value;
-    var doc = this.selectDoc.nativeElement.value;
-    var med = this.selectMed.nativeElement.value;
+    var nombre = this.inputNNombre.nativeElement.value;
+    var obs = this.inputNObs.nativeElement.value;
+    var doc = this.selectNDoc.nativeElement.value;
+    var med = this.selectNMed.nativeElement.value;
     var dateNow = Date.now();
     var dateEx = new Date(dateNow);
     dateEx.setDate(dateEx.getDate() + 120);
     var dateProx = new Date(dateNow);
     dateProx.setDate(dateProx.getDate() + 45);
-    if (nombre !== '' && obs !== '' && doc !== '' && med !== '') {
+    if (nombre !== '' && doc !== '' && med !== '') {
       var paciente = {
         _id: null,
         nombre: nombre,
@@ -118,10 +118,10 @@ export class PacientesComponent implements OnInit{
             console.log(data.error);
           } else {
             console.log(data);
-            this.inputNombre.nativeElement.value = '';
-            this.inputObs.nativeElement.value = '';
-            this.selectDoc.nativeElement.value = '';
-            this.selectMed.nativeElement.value = '';
+            this.inputNNombre.nativeElement.value = '';
+            this.inputNObs.nativeElement.value = '';
+            this.selectNDoc.nativeElement.value = '';
+            this.selectNMed.nativeElement.value = '';
             this.loadData();
           }
         }
